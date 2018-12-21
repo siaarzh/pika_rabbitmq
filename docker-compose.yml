@@ -1,0 +1,34 @@
+version: "3.6"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    networks:
+      - pika
+    ports:
+      - 15672:15672
+      - 5672:5672
+      - 5671:5671
+
+  pika:
+    image: pika:pika
+    build:
+      context: .
+    networks:
+      - pika
+    depends_on:
+      - rabbitmq
+    volumes:
+      - type: bind
+        source: .
+        target: /code
+
+    command: >
+      /bin/bash -c "
+        sleep 15;
+        python app.py;
+      "
+
+networks:
+  pika:
+    attachable: true
