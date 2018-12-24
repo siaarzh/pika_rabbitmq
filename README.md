@@ -25,7 +25,7 @@ Run all containers separately.
         --network pika \
         rabbitmq:3.7-management
     ```
-    > Note: the ports `:5672` might not be necessary for your setup. See the [Official Docs](https://www.rabbitmq.com/networking.html) on this topic.
+    > See the [Official Docs](https://www.rabbitmq.com/networking.html) on the topic of networking.
     Use `guest`/`guest` as your login credentials for the Management UI on `localhost:15672`
 4. Make sure the server is running and then start the receive app:
     ```bash
