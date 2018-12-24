@@ -2,12 +2,12 @@
 import pika
 
 
-server_loc = 'rabbitmq'  # use <yourip> instead
+server_loc = 'localhost'  # use <yourip> instead
 credentials = pika.PlainCredentials('guest', 'guest')
 queue_name = 'TestQueue'
 body = "This is the first message"
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq', 5672,
+connection = pika.BlockingConnection(pika.ConnectionParameters(server_loc, 5672,
                                                                '/',
                                                                credentials))
 # connection = pika.BlockingConnection(pika.ConnectionParameters(server_loc))
